@@ -2,6 +2,9 @@ namespace Pizza;
 
 public static class EsenUtils
 {
+    /// <summary>
+    /// спрашивает у пользователя да нет
+    /// </summary>
     public static string sprositDaNet(string vopros)
     {
         Console.WriteLine(vopros);
