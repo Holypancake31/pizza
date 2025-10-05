@@ -13,6 +13,7 @@ public static class EsenUtils
         }
         return text;
     }
+    //функция
     //проверка пароля
     public static void chekParol(string name,string right_parol)
     {
@@ -35,6 +36,7 @@ public static class EsenUtils
         
     }   
     
+    //jkjk
     
 
 
