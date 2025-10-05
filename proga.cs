@@ -69,3 +69,5 @@ print("privet3")
             }
             Console.WriteLine("До свидания");
         }
+        
+        */
