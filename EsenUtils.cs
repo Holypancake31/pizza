@@ -53,7 +53,7 @@ public static class EsenUtils
     
     
 // Тут красиво оформляется только название(товаров)
-    public static void printSpisok(string title, string spisok)
+    public static void printSpisok(string title, string [] spisok)
     {
         Console.WriteLine(title);
         var infa = "";
@@ -69,11 +69,11 @@ public static class EsenUtils
     }
 
 // Эта функция красиво оформляет строки. И не дает написать меньше одного а также не дает написать больше чем длина списка.
-    public static int printSpisok(string vopros, string spisok, string[] price_spisok)
+    public static int PrintSprositSpisok(string vopros, Dictionary<string, object> spisok, string[] price_spisok)
     {
         Console.WriteLine(vopros);
         printSpisokPrices(spisok, price_spisok);
-        var max_number = spisok.Length;
+        var max_number = spisok.Count;
         Console.WriteLine(vopros);
         var answer = Console.ReadLine();
         bool isnumber = int.TryParse(answer, out int num);
