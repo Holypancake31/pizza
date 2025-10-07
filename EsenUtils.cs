@@ -21,8 +21,8 @@ public static class EsenUtils
     {
         while (true)
         {
-            Console.WriteLine("Ваш пароль");
-            var parol = Console.ReadLine();
+            var parol = input("Ваш пароль");
+
             if (parol != right_parol)
             {
                 Console.WriteLine("Неверный пароль");
@@ -38,7 +38,7 @@ public static class EsenUtils
     
 // Эта функция красиво оформляет строки(названия товаров с ценой)
 
-    public static void printSpisokPrices(string spisok, string[] price_spisok)
+    public static void printSpisokPrices(string [] spisok, string[] price_spisok)
     {
         var infa = "";
         int x = 0;
@@ -69,27 +69,36 @@ public static class EsenUtils
     }
 
 // Эта функция красиво оформляет строки. И не дает написать меньше одного а также не дает написать больше чем длина списка.
-    public static int PrintSprositSpisok(string vopros, Dictionary<string, object> spisok, string[] price_spisok)
+    public static int PrintSprositSpisok(string vopros, string[] spisok, int[] price_spisok)
     {
         Console.WriteLine(vopros);
         printSpisokPrices(spisok, price_spisok);
-        var max_number = spisok.Count;
+        var max_number = spisok.Length;
         Console.WriteLine(vopros);
         var answer = Console.ReadLine();
         bool isnumber = int.TryParse(answer, out int num);
         while(isnumber || num > max_number || num < 1)
         {
             Console.WriteLine("Мы вас не понимаем. Введите заново. Число от 1 до", max_number);
-            Console.WriteLine(vopros);
-            answer = Console.ReadLine();
+            answer = input(vopros);
             isnumber = int.TryParse(answer, out num);
         }
         return int.Parse(answer);
+        
+        
+        
+        
     }
 
-    
-    
-    
+    public static string input(string vopros)
+    {
+        Console.WriteLine(vopros);
+        string text = Console.ReadLine();
+        return text;
+        
+    }
+
+
 }
 
 

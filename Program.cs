@@ -182,7 +182,7 @@ static void main(string[] args)
     int[] price_soki = [70, 99, 399];
 
 
-    Dictionary<string, object> pizzas = [pizza_1, pizza_2, pizza_3, pizza_4, pizza_5];
+    Dictionary<string, object> [] pizzas = [pizza_1, pizza_2, pizza_3, pizza_4, pizza_5];
     int[] pizzas_nasklade = [10, 20, 15, 10, 25];
     string[] pizzas_description =
     [
@@ -225,7 +225,8 @@ static void main(string[] args)
         continue;
     }
 
-    if (pizzas_count > pizzas_nasklade) 
+    var znazenie = pizzas_nasklade[pizza_number];
+    if (pizzas_count > znazenie) 
     {
         Console.WriteLine("Вы превысили доступное кол-во." + pizza_name + "Всего доступно" + pizzas_nasklade);
         continue;
@@ -241,8 +242,7 @@ static void main(string[] args)
     var pizza_base = Console.ReadLine();
     while (pizza_base != "1" && pizza_base != "2") ;
     Console.WriteLine("Мы вас не понимаем.Введите заново. ");
-    Console.WriteLine("Выберете тесто: Пышное-1.Тонкое-2  ");
-    pizza_base = Console.ReadLine();
+    pizza_base = EsenUtils.input("Выберете тесто: Пышное-1.Тонкое-2  ");
 
 
     var sauce_number = 0;
@@ -284,44 +284,54 @@ static void main(string[] args)
     {
         koktel_number = EsenUtils.PrintSprositSpisok("Выберите номер коктейля:", coctails, price_coctails);
         var pizza_cost = 0;
-        var distanse = 0;
-        var need_dostavka = EsenUtils.sprositDaNet("Нужна ли доставка?: ");
     }
 
+    var distanse = 0;
+    
+    var pizza_price = 0;
+    var pizzacost = 0;
+    
+    var need_dostavka = EsenUtils.sprositDaNet("Нужна ли доставка?: ");
     if (need_dostavka == "да") ;
     {
         Console.WriteLine("Сколько до вас ехать?");
         var distanseStroka = Console.ReadLine();
         bool olnumber = int.TryParse(distanseStroka, out distanse);
-        while (olnumber);
-        Console.WriteLine("Введие пожалуйста именно число");
-        Console.WriteLine("Сколько до вас ехать?");
-        distanseStroka = Console.ReadLine();
-        distanse = int.Parse(distanseStroka);
-        pizza_price = price_pizzas[pizza_number - 1];
-        pizza_cost = pizzas_count * pizza_price;
+
         
-    }
+        
+        while (olnumber)
+        {
+            
+            Console.WriteLine("Введие пожалуйста именно число");
+            Console.WriteLine("Сколько до вас ехать?");
+            distanseStroka = Console.ReadLine();
+            distanse = int.Parse(distanseStroka);
+            pizza_price = price_pizzas[pizza_number - 1];
+            pizzacost = pizzas_count * pizza_price;
+
+
+        }
 
     }
 
 // Здесь вычисляется цена с учетом размера пиццы.
     if (pizza_size == "1") ;
     {
-        pizza_cost = pizza_cost * 1;
+        pizzacost = pizzacost * 1;
     }
     else if (pizza_size == "2") ;
     {
-            pizza_cost = pizza_cost * 1.3;
+            pizzacost = pizzacost * 1.3;
     }
 
     else if (pizza_size == "3") ;
     {
-            pizza_cost = pizza_cost * 1.6;
+            pizzacost = pizzacost * 1.6;
     }
     if distanse == 0;
 // Здесь вычисляется цена с учетом скидки.
-        pizza_cost = pizza_cost * 0.85;
+        pizzacost = pizzacost * 0.85;
 
     var dostavka_cost = 0;
     if (distanse <= 3);
