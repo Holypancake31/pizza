@@ -289,7 +289,7 @@ static void main(string[] args)
         var distanse = 0;
 
         var pizza_price = 0;
-        var pizzacost = 0;
+        decimal pizzacost = 0;
 
         var need_dostavka = EsenUtils.sprositDaNet("Нужна ли доставка?: ");
         if (need_dostavka == "да") ;
@@ -316,7 +316,8 @@ static void main(string[] args)
         }
         else if (pizza_size == 2)
         {
-            pizzacost = pizzacost * 1.3;
+            // m ПОСЛЕ 1.3 ЭТО НЕ ОШИБКА. ЭТА БУКВА ОЗНАЧАЕТ ЧТО ЧИСЛО ТИПА decimal
+            pizzacost = pizzacost * 1.3m;
         }
 
         else if (pizza_size == 3)
