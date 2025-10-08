@@ -1,3 +1,5 @@
+using System;
+
 namespace Pizza;
 
 public static class EsenUtils
@@ -14,10 +16,12 @@ public static class EsenUtils
             Console.WriteLine("Мы вас не понимаем. Введите заново.");
             text = Console.ReadLine();
         }
+
         return text;
     }
+
     //функция проверка пароля
-    public static void chekParol(string name,string right_parol)
+    public static void chekParol(string name, string right_parol)
     {
         while (true)
         {
@@ -34,26 +38,33 @@ public static class EsenUtils
                 break;
             }
         }
-    }   
-    
+    }
+
 // Эта функция красиво оформляет строки(названия товаров с ценой)
 
-    public static void printSpisokPrices(string [] spisok, string[] price_spisok)
+    public static void printSpisokPrices(string[] spisok, int[] price_spisok)
     {
         var infa = "";
         int x = 0;
         foreach (var item in spisok)
         {
-            infa = infa + (x + 1) + ". " + item + " - " + (price_spisok[x]) + " руб.\n";
+            if (price_spisok != null)
+            {
+                infa = infa + (x + 1) + ". " + item + " - " + (price_spisok[x]) + " руб.\n";
+            }
+            else
+            {
+                infa = infa + (x + 1) + ". " + item;
+            }
+
             x = x + 1;
             Console.WriteLine(infa);
         }
     }
-    
-    
-    
+
+
 // Тут красиво оформляется только название(товаров)
-    public static void printSpisok(string title, string [] spisok)
+    public static void printSpisok(string title, string[] spisok)
     {
         Console.WriteLine(title);
         var infa = "";
@@ -65,7 +76,6 @@ public static class EsenUtils
         }
 
         Console.WriteLine(infa);
-
     }
 
 // Эта функция красиво оформляет строки. И не дает написать меньше одного а также не дает написать больше чем длина списка.
@@ -77,17 +87,14 @@ public static class EsenUtils
         Console.WriteLine(vopros);
         var answer = Console.ReadLine();
         bool isnumber = int.TryParse(answer, out int num);
-        while(isnumber || num > max_number || num < 1)
+        while (isnumber || num > max_number || num < 1)
         {
             Console.WriteLine("Мы вас не понимаем. Введите заново. Число от 1 до", max_number);
             answer = input(vopros);
             isnumber = int.TryParse(answer, out num);
         }
+
         return int.Parse(answer);
-        
-        
-        
-        
     }
 
     public static string input(string vopros)
@@ -95,10 +102,5 @@ public static class EsenUtils
         Console.WriteLine(vopros);
         string text = Console.ReadLine();
         return text;
-        
     }
-
-
 }
-
-
