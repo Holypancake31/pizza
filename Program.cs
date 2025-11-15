@@ -41,7 +41,9 @@ main([]);
 static void main(string[] args)
 {
     //pizza(args);
-    PriceCalculator.calculatelgota(args);
+    Color myColor = Color.Blue;
+    
+    PriceCalculator.calculatelgota(myColor, args);
 }
 
 static void pizza(string[] args)

@@ -1,7 +1,11 @@
+using Pizza;
+
 public static class PriceCalculator
 {
-    public static void calculatelgota(string[] prms)
+    public static void calculatelgota(Color color, string[] prms)
     {
+        Console.WriteLine(color);
+        
         decimal result = 0;
         decimal price = 100;
 
