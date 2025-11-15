@@ -40,6 +40,12 @@ main([]);
 
 static void main(string[] args)
 {
+    //pizza(args);
+    PriceCalculator.calculatelgota(args);
+}
+
+static void pizza(string[] args)
+{
     string[] doppizzas = [" Пицца барбекью", "четыре сезона", "Деревенская", " Фирменная", " Маргарита"];
     Console.WriteLine("Скоро в продаже! ");
     var numberPizzas = 1;
