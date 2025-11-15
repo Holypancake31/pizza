@@ -78,18 +78,21 @@ public static class EsenUtils
         Console.WriteLine(infa);
     }
 
-// Эта функция красиво оформляет строки. И не дает написать меньше одного а также не дает написать больше чем длина списка.
+
+    
+// Эта функция красиво оформляет строки. И не дает написать меньше одного, а также не дает написать больше чем длина списка.
     public static int PrintSprositSpisok(string vopros, string[] spisok, int[] price_spisok)
     {
         Console.WriteLine(vopros);
         printSpisokPrices(spisok, price_spisok);
         var max_number = spisok.Length;
         Console.WriteLine(vopros);
+        int num;
         var answer = Console.ReadLine();
-        bool isnumber = int.TryParse(answer, out int num);
-        while (isnumber || num > max_number || num < 1)
+        bool isnumber = int.TryParse(answer, out num);
+        while  (!isnumber || num > max_number || num < 1)
         {
-            Console.WriteLine("Мы вас не понимаем. Введите заново. Число от 1 до", max_number);
+            Console.WriteLine("Мы вас не понимаем. Введите заново. Число от 1 до " + max_number);
             answer = input(vopros);
             isnumber = int.TryParse(answer, out num);
         }
@@ -97,6 +100,72 @@ public static class EsenUtils
         return int.Parse(answer);
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public static string input(string vopros)
     {
         Console.WriteLine(vopros);

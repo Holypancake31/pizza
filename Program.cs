@@ -58,7 +58,7 @@ static void main(string[] args)
 
     string[] namesA = ["Есения", "Рома", "Катенька", "Максик", "Тая", "Дедушка"];
     string[] parolsA = ["2013202", "505658", "1986", "фываолдж", "2011", "2027"];
-    string[] skidkasA = ["40%", "35", "99", "100", "45", "15"];
+    decimal[] skidkasA = [0.4m, 0.35m, 0.4m, 0.2m, 0,45m, 0,15m];
     var names = namesA.ToList();
     var parols = parolsA.ToList();
     var skidkas = skidkasA.ToList();
@@ -86,7 +86,7 @@ static void main(string[] args)
         {
             login_found = true;
             found_number = number;
-            Console.WriteLine("Добро пожаловать", name);
+            Console.WriteLine("Добро пожаловать" + name);
             break;
         }
 
@@ -115,7 +115,7 @@ static void main(string[] args)
                 {
                     names.Add(login);
                     parols.Add(new_parol);
-                    skidkas.Add("0");
+                    skidkas.Add(0);
                     Console.WriteLine("Регистрация прошла успешно! Спасибо!!!");
                     break;
                 }
@@ -133,7 +133,7 @@ static void main(string[] args)
     EsenUtils.chekParol(name, right_parol);
 
 
-    string skidki = skidkas[found_number];
+    decimal skidki = skidkas[found_number];
 
 
     var pizza_1 = new Dictionary<string, object>();
@@ -174,7 +174,7 @@ static void main(string[] args)
 
 
     string[] coctails = ["Молочный коктейль", "Шоколадный коктейль", "Клубничный коктель"];
-    int[] price_coctails = [299, 399, 299];
+    int [] price_coctails = [299, 399, 299];
 
     string[] gazirovki = ["Кока-кола", "Фанта", "Пепси", "Оригинальная кока-кола"];
     int[] price_gazirovki = [69, 89, 99, 399];
@@ -205,15 +205,15 @@ static void main(string[] args)
 
 
         var pizza_number = EsenUtils.PrintSprositSpisok("Укажите номер пиццы:", pizza_names, price_pizzas);
-        Console.WriteLine(pizzas[pizza_number - 1]);
-        var pizza_name = pizzas[pizza_number - 1];
-        var pizza_description = pizzas_description[pizza_number - 1];
+        Console.WriteLine(pizzas[pizza_number-1]);
+        var pizza_name = pizzas[pizza_number-1];
+        var pizza_description = pizzas_description[pizza_number-1];
         Console.WriteLine(pizza_description);
 
         Console.WriteLine("Сколько вам нужно этих пицц? ");
         var countStroka = Console.ReadLine();
         bool innumber = int.TryParse(countStroka, out int num);
-        while (innumber || num < 0)
+        while (!innumber || num < 0)
         {
             Console.WriteLine("Введие пожалуйста число от одного до десяти");
             Console.WriteLine("Сколько вам нужно этих пицц? ");
@@ -227,7 +227,7 @@ static void main(string[] args)
             continue;
         }
 
-        var nasklade = pizzas_nasklade[pizza_number];
+        var nasklade = pizzas_nasklade[pizza_number-1];
         if (pizzas_count > nasklade)
         {
             Console.WriteLine("Вы превысили доступное кол-во." + pizza_name + "Всего доступно" + pizzas_nasklade);
@@ -236,7 +236,7 @@ static void main(string[] args)
 
         Console.WriteLine();
         string[] sizes = ["Маленькая", "Средняя", "Большая"];
-        EsenUtils.printSpisok("У нас есть несколько размеров пиццы", sizes);
+        EsenUtils.printSpisok("У нас есть несколько 4" + " размеров пиццы", sizes);
         int pizza_size = EsenUtils.PrintSprositSpisok("Выберите размер пиццы: ", ["1", "2", "3"], [1, 2, 3]);
 
         Console.WriteLine("Выберете тесто: Пышное-1.Тонкое-2");
@@ -248,7 +248,7 @@ static void main(string[] args)
 
         var sauce_number = 0;
         string sauce_name = "";
-        var sauce_cost = 0;
+        var sauce_cost = 0m;
         var pizza_soys = EsenUtils.sprositDaNet("Вам нужен соус?");
         if (pizza_soys == "да")
         {
@@ -322,13 +322,13 @@ static void main(string[] args)
 
         else if (pizza_size == 3)
         {
-            pizzacost = pizzacost * 1.6;
+            pizzacost = pizzacost * 1.6m;
         }
 
         if (distanse == 0)
         {
 // Здесь вычисляется цена с учетом скидки.
-            pizzacost = pizzacost * 0.85;
+            pizzacost = pizzacost * 0.85m;
         }
 
         var dostavka_cost = 0;
@@ -348,7 +348,7 @@ static void main(string[] args)
         }
 
 
-        int total = pizzacost + dostavka_cost + sauce_cost * skidki;
+        decimal total = pizzacost + dostavka_cost + sauce_cost * skidki;
 
 
         if (koktel_number > 0) ;
